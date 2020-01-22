@@ -1,0 +1,20 @@
+<main class="container-fluid no-gutters text-dark h-100">
+  <section class="row mx-auto h-25">
+    <aside *ngIf="error" class="alert alert-warning mx-auto h-25">
+      {{ error }}
+    </aside>
+    <article class="col-12 h-75">
+      <select class="custom-select" #characterSelect (change)="setSelectedCharacter(characterSelect.value)">
+        <option *ngFor="let character of characterData">{{ character.name }}</option>
+      </select>
+    </article>
+  </section>
+  <section class="row">
+    <article class="col-lg-6 col-md-12">
+      <app-character [selectedCharacter]="chosenCharacter"></app-character>
+    </article>
+    <article class="col-lg-6 col-md-12">
+      <app-movies [movies]="chosenCharacterFilms"></app-movies>
+    </article>
+  </section>
+</main>

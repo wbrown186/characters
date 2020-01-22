@@ -1,0 +1,24 @@
+<aside *ngIf="errors.length > 0" class="alert alert-warning w-50 mx-auto">
+    <p *ngFor="let error of errors"> {{ error }}</p>
+</aside>
+<section *ngIf="selectedCharacter" class="card w-50 mx-auto">
+    <article class="card-body">
+        <h3 class="card-title">{{ selectedCharacter.name }}</h3>
+        <h6> {{ selectedCharacter.gender }}
+            <ng-container *ngFor="let race of species">
+                {{ (race | async)?.name }}
+            </ng-container> from {{ (homeworld | async)?.name }}
+        </h6>
+        <ul>
+            <li>Height: {{ selectedCharacter.height }}</li>
+            <li>Weight: {{ selectedCharacter.mass }}</li>
+            <li>Hair Color: {{ selectedCharacter.hair_color }}</li>
+            <li>Skin Color: {{ selectedCharacter.skin_color }}</li>
+            <li>Eye Color: {{ selectedCharacter.eye_color }}</li>
+        </ul>
+        <p *ngIf="starships.length > 0 || vehicles.length > 0"> Known to drive
+            <ng-container *ngFor="let ship of starships"> "{{ (ship | async)?.name }}"</ng-container>
+            <ng-container *ngFor="let vehicle of vehicles"> "{{ (vehicle | async)?.name }}"</ng-container>
+        </p>
+    </article>
+</section>

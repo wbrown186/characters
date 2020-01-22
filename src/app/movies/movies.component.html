@@ -1,0 +1,12 @@
+<aside *ngIf="errors.length > 0" class="alert alert-warning w-50 mx-auto">
+    <p *ngFor="let error of errors"> {{ error }}</p>
+</aside>
+<section *ngIf="films && films.length > 0" class="card w-50 mx-auto">
+    <article class="card-body">
+        <h3 class="card-title">Films Seen In</h3>
+        <table>
+            <tr *ngFor="let movie of films"><td>{{ (movie | async)?.title }}</td></tr>
+        </table>
+
+    </article>
+</section>
